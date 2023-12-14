@@ -24,8 +24,7 @@ class SystemInfoTread(QtCore.QThread):
         self.delay = delay
         print(self.delay, self.status, "  proc")
 
-
-    def run(self) -> None:  # TODO переопределить метод run
+    def run(self) -> None:
         print("RUN")
         while self.status:
 
@@ -59,7 +58,6 @@ class Window(QtWidgets.QWidget):
         self._thread = SystemInfoTread()
         self.initTableModel()
 
-
         self.initUi()
         self.initSignal()
 
@@ -71,12 +69,11 @@ class Window(QtWidgets.QWidget):
         self.tableView.setMinimumWidth(500)
         layout = QtWidgets.QVBoxLayout()
         layout.addWidget(self.tableView)
-       # self.tableView.resizeColumnsToContents()
+        # self.tableView.resizeColumnsToContents()
         self.setLayout(layout)
 
     def initSignal(self):
         self._thread.systemSignal.connect(lambda data: self._info_table(data))
-
 
     def _info_table(self, data):
         self.tableModel.clear()
@@ -105,9 +102,6 @@ class Window(QtWidgets.QWidget):
         self.tableModel.setHorizontalHeaderLabels(["-            имя процесса          -",
                                                    "-            Id процесса           -",
                                                    "-            тип процесса          -"])
-
-
-
 
     def itemSelectionChanged(self, item: QtCore.QModelIndex) -> None:
         """
