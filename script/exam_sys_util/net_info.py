@@ -77,13 +77,13 @@ class Net_info_window(QtWidgets.QWidget):
 
     def _info_load(self, data: dict):
         str_ = ''
-
+        self.info_net_info.clear()
         for k, v in data.items():
-            str_ = f"соединение: {k}\n" \
-                   f"mac: {v['mac']}\nipv4: {v['ipv4']}\nipv6: {v['ipv6']}\nданные отправка: {v['_sent']}\nданные получение: {v['_recv']}\nпакеты отправка: {v['packets_sent']}\nпакеты получение: {v['packets_recv']}\nошибки при получении: {v['err_recv']}\nошибки при отправки: {v['err_sent']}"
+            str_ += f"\nсоединение: {k}\n" \
+                   f"mac: {v['mac']}\nipv4: {v['ipv4']}\nipv6: {v['ipv6']}\nданные отправка: {v['_sent']}\nданные получение: {v['_recv']}\nпакеты отправка: {v['packets_sent']}\nпакеты получение: {v['packets_recv']}\nошибки при получении: {v['err_recv']}\nошибки при отправки: {v['err_sent']}\n"
         self.info_net_info.setPlainText(str_)
 
-        self.info_net_info.setPlainText(str_)
+      #  self.info_net_info.setPlainText(str_)
 
 
 if __name__ == "__main__":
